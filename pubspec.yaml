@@ -1,0 +1,71 @@
+name: rbdevvisitasapp
+description: Agende Visitas
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.3.2+20220711
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  firebase_core:
+  cloud_firestore:
+  flutter:
+    sdk: flutter
+  shared_preferences:
+  flutter_swiper:
+  firebase_auth:
+  flutter_masked_text:
+  flutter_localizations:
+    sdk: flutter
+  font_awesome_flutter:
+  datetime_picker_formfield:
+  http:
+  crypto:
+  flutter_spinkit:
+  search_choices: ^1.0.17
+  cupertino_icons: ^1.0.2
+  data_connection_checker: ^0.3.4
+  flutter_dash: ^0.0.1
+  image_picker:
+  uuid:
+  location:
+  lottie:
+  package_info:
+  firebase_crashlytics:
+  flutter_image_compress: ^1.0.0-nullsafety
+  path_provider: ^2.0.2
+  filesize: ^2.0.1
+  expandable: ^5.0.1
+  data_table_2: ^2.1.1
+  badges: ^2.0.1
+  reactive_forms: ^10.6.0
+  reactive_image_picker: ^0.3.2
+  cpfcnpj: ^1.0.3
+  mask_text_input_formatter: ^2.0.0
+  cpf_cnpj_validator: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.9.0
+flutter_icons:
+  image_path: "assets/icons/principal.png"
+  #image_path_android: "assets/images/icon-710x599-android.png"
+  #image_path_ios: "assets/images/icon-710x599-ios.png"
+  android: true
+  ios: true
+
+flutter:
+
+  uses-material-design: true
+  fonts:
+    - family:  FreteIcones
+      fonts:
+       - asset: assets/fonts/FreteIcones.ttf
+  assets:
+    - assets/logo.png
+    - assets/road.jpg
+    - assets/noimage.png
+    - assets/lottie/visitor-animation.json

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "223964877326",
+    "project_id": "agende-visitas",
+    "storage_bucket": "agende-visitas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223964877326:android:878f815bc7105e2c10a25f",
+        "android_client_info": {
+          "package_name": "com.rbdev.visitas.rbdevvisitasapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223964877326-f6kkc32ckqnq3o7sakfhm2bng1mtbgo6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuNCuQF4Lusscl9xew3zKDMRf3rpistiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223964877326-f6kkc32ckqnq3o7sakfhm2bng1mtbgo6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
