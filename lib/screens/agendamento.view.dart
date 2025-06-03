@@ -170,9 +170,9 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                       children: [
                         GrupoWidget(
                           icon: Icons.group_work_sharp,
-                          title: "Ala - Cela",
+                          title: "Ala | Cela",
                         ),
-                        Text(_ala + " - " + _cela),
+                        Text(_ala + " | " + _cela),
                       ],
                     )
                   : Container(),
