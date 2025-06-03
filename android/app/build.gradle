@@ -30,9 +30,9 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.rbdev.visitas.rbdevvisitasapp"
-        minSdkVersion 16
-        targetSdkVersion 30
+        applicationId "com.agendevisita.app"
+        minSdkVersion 21
+        targetSdkVersion 34
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

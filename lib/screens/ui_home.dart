@@ -173,6 +173,7 @@ class _HomeViewPage extends State<HomeViewPage> {
                     leading: Icon(Icons.exit_to_app),
                     title: Text('Sair'),
                     onTap: () {
+                      dadosUsuario = {};
                       signOut(context);
                     },
                   ),

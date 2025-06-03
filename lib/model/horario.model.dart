@@ -29,10 +29,14 @@ class HorarioModel {
 
   String getHorarioAmigavel(){
     var _horario = "";
-    _horario += this.aGENDADATA;
-    _horario += " - " + getNomeTurno(this.aGENDAHORARIOTURNO);
-    _horario += " (" + this.getHorarioInicioForm();
-    _horario += " às " + this.getHorarioTerminoForm() + ")";
+    if (this.aGENDAID == null || this.aGENDAID <= 0) {
+      return _horario;
+    }else{
+      _horario += this.aGENDADATA;
+      _horario += " - " + getNomeTurno(this.aGENDAHORARIOTURNO);
+      _horario += " (" + this.getHorarioInicioForm();
+      _horario += " às " + this.getHorarioTerminoForm() + ")";
+    }
     return _horario;
   }
 

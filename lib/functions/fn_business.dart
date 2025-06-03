@@ -100,7 +100,11 @@ Future<List<dynamic>> getVagas() async {
     <String, Object>{
       "sys": sysCode,
       "action": "vagas",
-      "arguments": {},
+      "arguments": {
+        "PESSOA_ID": dadosUsuario['PESSOA_ID'] ?? 0,
+        "USR_LOGIN": dadosUsuario['USR_LOGIN'] ?? '',
+        "UNI_CODIGO": dadosUsuario['UNI_CODIGO'] ?? 0
+      }
     },
   );
 
@@ -164,13 +168,13 @@ Future<dynamic> getEnderecoViaCep(String cep) async {
   return jsonDecode(res.body);
 }
 
-List<HorarioModel> getHorarios(int agendaID) {
+List<HorarioModel> getHorarios(int idUnidade) {
   var _listaHorarios = <HorarioModel>[];
   listaVagas.forEach(
     (el) {
       var deco = jsonDecode((el));
-      if (deco['idAgenda'] == agendaID) {
-        var vagas = deco['vagas'];
+      if (deco['idUnidade'] == idUnidade) {
+        var vagas = deco['vagasDetalhe'];
         vagas.forEach(
           (vaga) {
             _listaHorarios.add(HorarioModel.fromJson(vaga));
@@ -189,7 +193,6 @@ List<UnidadeModel> getUnidades() {
       _listaUnidades.add(UnidadeModel.fromJson(jsonDecode(el)));
     },
   );
-
   return _listaUnidades;
 }
 
@@ -197,14 +200,14 @@ bool podeAgendar() {
   return dadosUsuario['PES_CADASTRO_VALIDO'] == "S";
 }
 
-List<TipoVisitaModel> getTipoVisita(int agendaID) {
+List<TipoVisitaModel> getTipoVisita(int idUnidade, int agendaID) {
   var _lista = <TipoVisitaModel>[];
 
   listaVagas.forEach(
     (el) {
       var deco = jsonDecode((el));
-      if (deco['idAgenda'] == agendaID) {
-        List<dynamic> vagas = deco['vagas'];
+      if (deco['idUnidade'] == idUnidade) {
+        List<dynamic> vagas = deco['vagasDetalhe'];
         vagas.forEach(
           (vaga) {
             //var decoVaga = jsonDecode((vaga));

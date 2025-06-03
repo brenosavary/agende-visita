@@ -76,12 +76,12 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                 closeButton: 'Fechar',
                 items: getUnidades().map((item) {
                   return DropdownMenuItem(
-                    value: item.idAgenda,
+                    value: item.idUnidade,
                     child: Text(
                       item.nomeUnidade,
                       style: TextStyle(
                         fontSize: 14,
-                        color: item.nomeUnidade.indexOf('Vagas para') <= 0
+                        color: item.nomeUnidade.indexOf('Vagas dispon') <= 0
                             ? Colors.red
                             : Colors.green,
                         fontWeight: FontWeight.w900,
@@ -89,7 +89,7 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                     ),
                   );
                 }).toList(),
-                value: _agenda.aGENDAID,
+                value: _agenda.uNICODIGO,
                 hint: "Selecionar...",
                 searchHint: "Selecione a unidade e agenda",
                 onChanged: (item) {
@@ -97,8 +97,8 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                     () {
                       initAgenda();
                       if (item != null) {
-                        _agenda.uNICODIGO = getUnidadeByAgenda(item);
-                        _agenda.aGENDAID = item;
+                        _agenda.uNICODIGO = item;
+                        // _agenda.aGENDAID = item;
                       }
                     },
                   );
@@ -106,9 +106,9 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                 isExpanded: true,
                 isCaseSensitiveSearch: false,
                 validator: (value) {
-                  if (value == null) {
-                    return "Informe a unidade e agenda!";
-                  }
+                  // if (value == null) {
+                  //   return "Informe a unidade e agenda!";
+                  // }
                   return null;
                 },
               ),
@@ -116,7 +116,7 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                 icon: Icons.access_time_outlined,
                 title: "Dia e Horário",
               ),
-              getHorarios(_agenda.aGENDAID).isEmpty
+              getHorarios(_agenda.uNICODIGO).isEmpty
                   ? SearchChoices.single(
                       closeButton: 'Fechar',
                       items: [],
@@ -128,7 +128,7 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                     )
                   : SearchChoices.single(
                       closeButton: 'Fechar',
-                      items: getHorarios(_agenda.aGENDAID).map((item) {
+                      items: getHorarios(_agenda.uNICODIGO).map((item) {
                         return DropdownMenuItem(
                           value: item.aGENDAHORARIOID,
                           child: Text(item.getHorarioAmigavel()),
@@ -142,11 +142,9 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                           () {
                             _getDocumentoModel(horarioCodigo);
                             if (horarioCodigo != null) {
+                              _agenda.aGENDAHORARIOID = _horario.aGENDAHORARIOID;
                               _agenda.aGENDAID = _horario.aGENDAID;
-                              _agenda.aGENDAHORARIOID =
-                                  _horario.aGENDAHORARIOID;
-                              _cela =
-                                  _horario.cela != null ? _horario.cela : "";
+                              _cela = _horario.cela != null ? _horario.cela : "";
                               _ala = _horario.ala != null ? _horario.ala : "";
                               ;
                             } else {
@@ -172,9 +170,9 @@ class _AgendamentoViewState extends State<AgendamentoView> {
                       children: [
                         GrupoWidget(
                           icon: Icons.group_work_sharp,
-                          title: "Ala -- Cela",
+                          title: "Ala - Cela",
                         ),
-                        Text(_ala + " -- " + _cela),
+                        Text(_ala + " - " + _cela),
                       ],
                     )
                   : Container(),
@@ -184,7 +182,7 @@ class _AgendamentoViewState extends State<AgendamentoView> {
               ),
               SearchChoices.single(
                 closeButton: 'Fechar',
-                items: getTipoVisita(_agenda.aGENDAID).map((item) {
+                items: getTipoVisita(_agenda.uNICODIGO, _agenda.aGENDAID).map((item) {
                   return DropdownMenuItem(
                     value: item.tipo,
                     child: Text(item.nome),
@@ -340,7 +338,7 @@ class _AgendamentoViewState extends State<AgendamentoView> {
 
   // ignore: missing_return
   HorarioModel _getDocumentoModel(int id) {
-    getHorarios(_agenda.aGENDAID).forEach((element) {
+    getHorarios(_agenda.uNICODIGO).forEach((element) {
       if (element.aGENDAHORARIOID == id) {
         _horario = element;
       }

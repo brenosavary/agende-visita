@@ -1,4 +1,4 @@
-package com.rbdev.visitas.rbdevvisitasapp;
+package com.agendevisita.app;
 
 import io.flutter.embedding.android.FlutterActivity;
 
